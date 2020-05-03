@@ -1,14 +1,14 @@
 
 // Creacion de colecciones
 
-db.createCollection("Administrators");
-db.createCollection("Operators");
-db.createCollection("Passengers");
-db.createCollection("Nodes");
-db.createCollection("Flights");
-db.createCollection("Shops");
+db.createCollection("administrators");
+db.createCollection("operators");
+db.createCollection("passengers");
+db.createCollection("nodes");
+db.createCollection("flights");
+db.createCollection("shops");
 
-db.Administrators.insert({
+db.administrators.insert({
 	id: "12123",
 	name: "Josep M. Roig",
 	email: "jmroig@gmail.com",
@@ -17,7 +17,7 @@ db.Administrators.insert({
 	password: "aBnsizi"
 	});
 
-db.Operators.insert({
+db.operators.insert({
 	id: "256845",
 	name: "Daniel Ortiz",
 	email: "dortiz@gmail.com",
@@ -26,7 +26,7 @@ db.Operators.insert({
 	password: "m12Asml",
 	airline: "Swissport"
 	});
-db.Passengers.insert({
+db.passengers.insert({
 	id: "SD4564",
 	name: "Antonio Delgado",
 	email: "adelgado@gmail.com",
@@ -38,7 +38,7 @@ db.Passengers.insert({
 	location: "1.2,1.2"
 	});
 
-db.Passengers.insert({
+db.passengers.insert({
 	id: "A334i499J",
 	name: "Jordi Gasol",
 	email: "jgasol@gmail.com",
@@ -51,7 +51,7 @@ db.Passengers.insert({
 	});
 
 
-db.Passengers.insert({
+db.passengers.insert({
 	id: "45364678J",
 	name: "Joaquin Montes Salom",
 	email: "jmsalom@gmail.com",
@@ -62,8 +62,8 @@ db.Passengers.insert({
 	City: "Madrid",
 	location: "12,34"
 	});
-	
-db.Passengers.insert({
+
+db.passengers.insert({
 	id: "A334i499J",
 	name: "Pau Molla Freud",
 	email: "pmfreud@gmail.com",
@@ -74,8 +74,8 @@ db.Passengers.insert({
 	City: "El Prat de Llobreat",
 	location: "124,85"
 	});
-	
-db.Passengers.insert({
+
+db.passengers.insert({
 	id: "A0957832",
 	name: "Earl Harrison",
 	email: "eharrison@gmail.com",
@@ -86,8 +86,8 @@ db.Passengers.insert({
 	City: "California",
 	location: "13,87"
 	});
-	
-db.Passengers.insert({
+
+db.passengers.insert({
 	id: "A334i499J",
 	name: "Harald Haaland",
 	email: "hhaaland@gmail.com",
@@ -100,14 +100,14 @@ db.Passengers.insert({
 	});
 
 
-db.Nodes.insert({
+db.nodes.insert({
 	id: "A1",
 	location: "15,16",
 	state: "free",
 	destination: ""
 	});
 
-db.Shops.insert({
+db.shops.insert({
 	id: "2345",
 	name: "Jack and Jones",
 	product_name: "Clothes",
@@ -122,7 +122,7 @@ db.Shops.insert({
 	});
 
 
-db.Flights.insert({
+db.flights.insert({
 	name: "VL 203",
     From: "Vilanova",
     to: "London",
@@ -157,7 +157,7 @@ db.Flights.insert({
 	},
 	{
 	  id: "A334i499J",
-	  name: "Pau Molla Freud"	
+	  name: "Pau Molla Freud"
 	}]
-	
+
 });

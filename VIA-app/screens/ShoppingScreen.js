@@ -21,27 +21,13 @@ class ShoppingScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          currentUserId: undefined,
-          client: undefined,
-          comercios: undefined,
-          refreshing: false,
-          items: undefined
+            isLoaded: false,
+            items: undefined,
         };
         //this._loadClient = this._loadClient.bind(this);
     }
 
     componentDidMount() {
-        /*fetch('http://jsonplaceholder.typicode.com/users') // URL de la API, en nuestro caso sera localhost
-            .then(res => res.json()) // Cuando recibamos los datos, se convierten en json .then(json => { // cuando ya esté en formato json
-            this.setState({
-            isLoaded: true, // decimos que ya ha cargado
-            items: json, // guardamos los datos en una lista llamada items
-        });*/
-        /*fetch("http://192.168.1.145:3000/api/").then(function(response) {
-            console.log("JSON: " + JSON.stringify(response.json()))
-        }).catch((error) => {
-            console.error(error);
-        });*/
         fetch('http://192.168.1.145:3000/api/shops') // URL de la API, en nuestro caso sera localhost
         .then(res => res.json()) // Cuando recibamos los datos, se convierten en json .then(json => { // cuando ya esté en formato json
         .then(json => { // cuando ya esté en formato json
@@ -50,6 +36,8 @@ class ShoppingScreen extends Component {
                 items: json, // guardamos los datos en una lista llamada items
             })
             console.log("JSON:" + JSON.stringify(json))
+        }).catch(function(error) {
+            console.log('Error obteniendo los datos: ' + error.message);
         });
     }
 
@@ -117,36 +105,21 @@ class ShoppingScreen extends Component {
                 </View>
                 <View style={{flex: 1}}>
                     <ScrollView>
-                        <ComercioItem
-                            titulo={"Snack & Go"}
-                            subtitulo={"Restaurante comida rápida"}
-                            url={"https://unsplash.com/photos/I79Pgmhmy5M/download?force=true"}
-                            estrellas={[1,2,3]}
-                        />
-                        <ComercioItem
-                            titulo={"FC Barcelona Store"}
-                            subtitulo={"Tienda de ropa"}
-                            url={"https://www.im-projects.com/wp-content/uploads/2016/04/FCB-Megastore.jpg"}
-                            estrellas={[1,2,3,4,5]}
-                        />
-                        <ComercioItem
-                            titulo={"Panadería Tosta Marc"}
-                            subtitulo={"Tienda de alimentación"}
-                            url={"https://unsplash.com/photos/07bBNmiV7ag/download?force=true"}
-                            estrellas={[1,2,3,]}
-                        />
-                        <ComercioItem
-                            titulo={"Snack & Go"}
-                            subtitulo={"Restaurante comida rápida"}
-                            url={"https://unsplash.com/photos/I79Pgmhmy5M/download?force=true"}
-                            estrellas={[1,2,3,4]}
-                        />
-                        <ComercioItem
-                            titulo={"Snack & Go"}
-                            subtitulo={"Restaurante comida rápida"}
-                            url={"https://unsplash.com/photos/I79Pgmhmy5M/download?force=true"}
-                            estrellas={[1,2,3]}
-                        />
+                        { this.state.isLoaded ? 
+                            this.state.items.map((item, index) => {
+                                return (
+                                    <ComercioItem
+                                        key={"key-" + index}
+                                        titulo={item.name}
+                                        subtitulo={item.product_name}
+                                        url={item.url_image}
+                                        estrellas={[1,2,3]}
+                                    />
+                                )
+                            })
+                        :
+                            null
+                        }
                     </ScrollView>
 
                 </View>

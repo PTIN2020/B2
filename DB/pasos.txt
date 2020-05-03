@@ -1,0 +1,22 @@
+//DB
+
+
+//Iniciamos el servidor de la base de datos
+> brew services start mongodb-community@4.2
+> mongo
+
+//Ver las dbs que hay en el servidor
+> show dbs
+
+//Cambiar a la base de datos
+> use terminal2
+
+//Cargar archivo de inserts
+> load ('/Users/albertgranados/Proyectos/PTIN/Backend/mongoSHOPS.js')
+
+
+
+
+//API
+> cd src
+> npm start

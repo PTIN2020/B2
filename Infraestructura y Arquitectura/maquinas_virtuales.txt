@@ -1,0 +1,53 @@
+Maquinas Virtuales
+	1. Creación de las maquinas virtuales
+		- SO: Debian 10.3
+			https://www.debian.org/
+		- Nombre: xxxx.terminal1.cat
+			Donde xxxx hace referencia al tipo de servicio que alogara esta maquina, por ejemplo:
+				dns: Hace referencia que es nuestro servidor de DNS
+				dhcp: Hace referencia que es nuestro servidor de DHCP
+				fog1: Hace referencia a que es nuestro servidor fog 1
+				www: Hace referencia a que es nuestro servidor web
+				ssh: Referencia que es nuestro servidor ssh
+
+			Propongo darles otros nombres menos amigables y mas internos, para asi poder enmascararlos en caso de ataque. Por ejemplo:
+				dhcp --> barraca.terminal1.cat
+				dns	 --> spook.terminal1.cat
+				ssh  --> masia.terminal1.cat
+				DB	 --> actv.terminal1.cat
+
+			Estos nombres hacen referencia a discotecas de la ruta del bakalao de valencia
+
+		- Medidas:
+			Ram: 512mb
+			Disco: 	Almacenamiento reservado dinamicamente
+					4,00 GB
+			Se tienen que estalar las guest editions de Virtual Box
+
+	2. FOG
+		- ¿Donde situaremos el FOG?
+			El fog lo situaremos en una casa de algun participante del equipo de desarrollo perteneciente al subgrupo de 'Infraestuctura y Arquitectura'.
+
+			Para poder habilitar la conexión a este solamente tendremos que modificar los routers para permitir la conexión a traves de los puertos indicados más adelante bien.
+
+Como solución a este distanciamiento y para mejorar el trabajo remoto propongo la configuración de un servicio de VPN para poder simular asi más realmente un entorno WAN/LAN que seria la terminal
+
+En cuanto a la conexion FOG <-> CLOUD se deveria de discutir con el grupo B1 sobre el tema de seguridad, en cuanto establecer el conexionado mediante una VPN diferente o via otra forma.
+
+		- Servicios que ofreceremos en nuestro terminal
+
+			· Servicio de DHCP:	Este servicio implementado con el paquete de debian: isc-dhcp-server. Nos proporcionara la resolucion de direcciones IP para nuestra red local. Ademas nos permitira realizar subneting para asi poder tener separados los dispositivos mobiles de los coches de los servidores con información sensible (como los fog)
+
+			· Servicio de DNS: Este servicio implementado con el paquete de debian: bind9. Nos proporcionara la resolución de nombres de manera local para asi poder adquirir las direccion IP (cambiante) del servidor/es fog, en este caso para obtener la del lider.
+
+			· Servicio Web: Este servicio no lo implantaremos nosotros, solo sabemos que se llamara www.terminal1.cat
+
+			· Servidor/es FOG: Estos congunto de 3 servidores son aquellos que guardaran toda la informacion sensible de la base de datos MongoDB, la geolocalización y todo lo relacionado con la computacion rapida y en tiempo cuasi real.
+
+		- Servidor DHCP
+
+			Este servicio se albergara en nuestro servidor que sera utilizado de puerta de entrada en nuestra simulación de terminal. Hace falta remarcar que gracias a esto podemos adjudicar las direcciones IP que queramos, con la nomenclatura que creamos correcta (no hace falta que sean 192.168.1.xx/24)
+
+			Este, aparte de la adjudicacion de direcciones IP a todos los dispositivos que se conecten a nuestra red
+
+	3. Cloud
