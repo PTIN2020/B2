@@ -8,6 +8,7 @@ B2 - Despliegue de la Infraestructura y Arquitectura, la Aplicación Móvil y la
 * [Video Sprint 2](https://drive.google.com/open?id=1ranAM1vpanqj37zv4GLwkyK12RWs6z42) - Daniel Beltran
 * [Video Sprint 3](https://drive.google.com/drive/u/0/folders/1wKsMdtyWNljN73U3ErywSdwSSM0juTck) - Kilian Roig
 * [Video Sprint 4](https://drive.google.com/file/d/1c2W6UUmyfnebcVl7qnQNfH2o0j0aVCRt/view?usp=sharing) - Albert Granados, David Martos y Roger Tarrés
+* [Video Sprint 5](https://drive.google.com/file/d/1dj-Q3WUBMdFtk0HG1ADsHpZ-jI-DhWoc/view?usp=sharing) - Daniel Beltrán, Javier Delgado y Toni Cifré
 
 ## Documentación 📚
 
@@ -16,6 +17,7 @@ B2 - Despliegue de la Infraestructura y Arquitectura, la Aplicación Móvil y la
 * [Documentación Sprint 2](https://github.com/PTIN2020/B2/blob/master/Wiki/Documentaci%C3%B3n-S2.pdf)
 * [Documentación Sprint 3](https://github.com/PTIN2020/B2/blob/master/Wiki/Documentaci%C3%B3n-S3.pdf)
 * [Documentación Sprint 4](https://github.com/PTIN2020/B2/blob/master/Wiki/Documentaci%C3%B3n-S4.pdf)
+* [Documentación Sprint 5](https://github.com/PTIN2020/B2/blob/master/Wiki/Documentaci%C3%B3n-S5.pdf)
 
 ## Instrucciones de despliegue 📦
 
