@@ -38,13 +38,13 @@ class ComercioItem extends Component {
                             
                         </View>
                     </View>
-                    <View style={{height: '100%', alignItems: 'flex-end', justifyContent: 'flex-end'}}>
+                    {/*<View style={{height: '100%', alignItems: 'flex-end', justifyContent: 'flex-end'}}>
                         <TouchableBounce onPress={() => null} style={{ flex: 1, alignItems: 'center', justifyContent: 'center', height: 50, width: 50}}>
                             <View style={{backgroundColor: Color.primaryColor, height: 30, width: 50, borderRadius: 10, alignItems: 'center', justifyContent: 'center'}}>
                                 <Text style={{fontSize: 14, fontWeight: 'bold', color: 'white'}}>Ir</Text>
                             </View>
                         </TouchableBounce>
-                    </View>
+                        </View>*/}
                 </View>
             </View>
         );

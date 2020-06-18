@@ -28,7 +28,7 @@ class ShoppingScreen extends Component {
     }
 
     componentDidMount() {
-        fetch('http://192.168.1.145:3000/api/shops') // URL de la API, en nuestro caso sera localhost
+        fetch('http://craaxcloud.epsevg.upc.edu:35300/api/shops') // URL de la API, en nuestro caso sera localhost
         .then(res => res.json()) // Cuando recibamos los datos, se convierten en json .then(json => { // cuando ya esté en formato json
         .then(json => { // cuando ya esté en formato json
             this.setState({
@@ -81,9 +81,10 @@ class ShoppingScreen extends Component {
             ];*/
         return (
             <View style={styles.container}>
+                <ScrollView>
                 <Text style={[styles.title, Platform.OS == "ios" ? {marginTop: 50} : null]}>Comercio</Text>
                 <View>
-                    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                    {/*<ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                         <View style={{flexDirection: 'row', marginBottom: 10, paddingBottom: 16, backgroundColor: 'white', elevation: 10}}>
                             <View style={[styles.categoryBox, {backgroundColor: Color.primaryColor, marginLeft: 16, elevation: 0}]}>
                                 <Text style={[styles.titleCategories, {color: 'white'}]}>Todo</Text>
@@ -101,10 +102,10 @@ class ShoppingScreen extends Component {
                                 <Text style={styles.titleCategories}>Servicios</Text>
                             </View>
                         </View>
-                    </ScrollView>
+        </ScrollView>*/}
                 </View>
                 <View style={{flex: 1}}>
-                    <ScrollView>
+                    
                         { this.state.isLoaded ? 
                             this.state.items.map((item, index) => {
                                 return (
@@ -120,9 +121,9 @@ class ShoppingScreen extends Component {
                         :
                             null
                         }
-                    </ScrollView>
 
                 </View>
+                </ScrollView>
             </View>
         );
     }

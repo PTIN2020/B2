@@ -16,44 +16,69 @@ class BoardingPass extends Component {
         return (
             <View style={[styles.content, {height: Dimensions.window.height - Dimensions.bottomBar.height - Dimensions.statusBar.height - PAGE_INDICATOR_HEIGHT}]}>
                 <View style={{backgroundColor: 'white', borderRadius: 20, height: '100%', width: '100%'}}>
-                    <Image
-                        style={{width: 100, height: 50, marginLeft: 16, marginTop: 16}}
-                        resizeMode="contain"
-                        source={require('../assets/vuelinglogo.png')}
-                    />
+                    <View style={{flexDirection: 'row', flexDirection: 'row', alignItems: 'center'}}>
+                        <Image
+                            style={{width: 100, height: 50, marginLeft: 16, marginTop: 16}}
+                            resizeMode="contain"
+                            source={ 
+                            this.props.aerolinea == 'IBERIA' ?
+                                require('../assets/iberia.png') 
+                            : this.props.aerolinea == 'Vueling' ?
+                                require('../assets/vuelinglogo.png')
+                            : this.props.aerolinea == 'AirEuropa' ?
+                                require('../assets/aireuropa.png')
+                            : this.props.aerolinea == 'Vilanova Airlines' ?
+                                require('../assets/via.png')
+                            : this.props.aerolinea == 'QATAR Airways' ?
+                                require('../assets/qatarairways.png')
+                            : this.props.aerolinea == 'KLM' ?
+                                require('../assets/klm.png')
+                            :
+                                require('../assets/vuelinglogo.png')
+                            }
+                        />
+                        <View style={{flexDirection: 'row-reverse', flex: 1, marginLeft: 20, marginTop: 20}}>
+                            <View style={{flexDirection: 'row', marginBottom: 6, height: 30}}>
+                                <View style={{borderRadius: 6, backgroundColor: '#3eb855', marginRight: 6, alignItems: 'center', justifyContent: 'center', flexDirection: 'row'}}>
+                                    <Image style={{height: 13, width: 13, tintColor: 'white', marginLeft: 6}} source={require('../assets/plane_icon.png')}/>
+                                    <Text style={{fontWeight: 'bold', color: 'white', marginHorizontal: 6, marginVertical: 2}}>{this.props.numvuelo}</Text>
+                                </View>
+                            </View>
+                        </View>
+                    </View>
                     <View style={{width: '100%', flexDirection: 'row', paddingHorizontal: 26}}>
                         <View style={{flex: 1.25}}>
-                            <Text style={{fontWeight: 'bold', fontSize: 26, color: '#333333'}}>BCN</Text>
-                            <Text numberOfLines={2} style={{fontSize: 12, color: '#a3a3a3'}}>Aeroport Josep Tarradellas</Text>
-                            <Text numberOfLines={2} style={{fontSize: 12, color: '#333333'}}>Barcelona</Text>
+                            <Text style={{fontWeight: 'bold', fontSize: 26, color: '#333333'}}>VIA</Text>
+                            <Text numberOfLines={2} style={{fontSize: 12, color: '#a3a3a3'}}>Vilanova Intelligent Airport</Text>
+                            <Text numberOfLines={2} style={{fontSize: 12, color: '#333333'}}>Vilanova i la Geltrú</Text>
                         </View>
                         <View style={{flex: 1, alignItems: 'center', justifyContent: 'center', rotation: 90 }}>
                             <Ionicons name="md-airplane" color={'#f9a855'} size={36}/>
                         </View>
                         <View style={{flex: 1.25}}>
-                            <Text style={{fontWeight: 'bold', fontSize: 26, color: '#333333'}}>CDG</Text>
-                            <Text numberOfLines={2} style={{fontSize: 12, color: '#a3a3a3'}}>Aéroport Charles de Gaulle</Text>
-                            <Text numberOfLines={2} style={{fontSize: 12, color: '#333333'}}>París</Text>
+                            <Text style={{fontWeight: 'bold', fontSize: 26, color: '#333333'}}>{this.props.destinoAbreviatura}</Text>
+                            <Text numberOfLines={2} style={{fontSize: 12, color: '#a3a3a3'}}>{this.props.destinoAeropuerto}</Text>
+                            <Text numberOfLines={2} style={{fontSize: 12, color: '#333333'}}>{this.props.destinoCiudad}</Text>
                         </View>
                     </View>
                     <View style={{width: '100%', flexDirection: 'row', paddingHorizontal: 26, marginTop: 26}}>
                         <View style={{flex: 1}}>
-                            <Text style={{fontWeight: 'bold', fontSize: 12, color: '#bfbfbf'}}>EMBARQUE:</Text>
-                            <Text numberOfLines={2} style={{fontSize: 16, color: '#333333'}}>08:00h.</Text>
+                            <Text style={{fontWeight: 'bold', fontSize: 12, color: '#bfbfbf'}}>SALIDA:</Text>
+                            <Text numberOfLines={2} style={{fontSize: 16, color: '#333333'}}>{this.props.horaSalida}</Text>
                         </View>
                         <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-                            <Text style={{fontWeight: 'bold', fontSize: 12, color: '#bfbfbf'}}>SALIDA:</Text>
-                            <Text numberOfLines={2} style={{fontSize: 16, color: '#333333'}}>08:45h.</Text>
+                            <Text style={{fontWeight: 'bold', fontSize: 12, color: '#bfbfbf'}}>LLEGADA:</Text>
+                            <Text numberOfLines={2} style={{fontSize: 16, color: '#333333'}}>{this.props.horaLlegada}</Text>
                         </View>
                         <View style={{flex: 1, alignItems: 'flex-end'}}>
                             <Text style={{fontWeight: 'bold', fontSize: 12, color: '#bfbfbf'}}>ASIENTO:</Text>
-                            <Text numberOfLines={2} style={{fontSize: 16, color: '#333333'}}>26E</Text>
+                            <Text numberOfLines={2} style={{fontSize: 16, color: '#333333'}}>{this.props.asiento}</Text>
                         </View>
                     </View>
                     <View style={{width: '100%', flexDirection: 'row', paddingHorizontal: 26, marginTop: 26}}>
                         <View style={{flex: 1}}>
                             <Text style={{fontWeight: 'bold', fontSize: 12, color: '#bfbfbf'}}>PASAJERO:</Text>
-                            <Text numberOfLines={2} style={{fontSize: 16, color: '#333333'}}>ALBERT GRANADOS ROMERO</Text>
+                            <Text numberOfLines={2} style={{fontSize: 16, color: '#333333'}}>{this.props.nombrePasajero}</Text>
                         </View>
                     </View>
                     <View style={{flex: 1, width: '100%', alignItems: 'center', justifyContent: 'center', paddingHorizontal: 26, marginTop: -22}}>

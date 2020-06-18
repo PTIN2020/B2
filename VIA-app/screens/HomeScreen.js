@@ -18,6 +18,7 @@ import ShoppingScreen from './ShoppingScreen'
 import MyPassScreen from './MyPassScreen'
 import NotificationsScreen from './NotificationsScreen'
 import ProfileScreen from './ProfileScreen'
+import Colors from "../constants/Colors";
 
 const Tab = createBottomTabNavigator();
 
@@ -66,10 +67,11 @@ function MyTabBar({ state, descriptors, navigation }) {
               onPress={onPress}
               onLongPress={onLongPress}
               style={{flex: 1}}
+              key={index}
             >
               <View style={{alignItems: 'center', justifyContent: 'center'}}>
-                <Ionicons name={tabBarIconName} color={isFocused ? activeColor : '#222'} size={22}/>
-                <Text style={{fontSize: 12, fontWeight: 'bold', color: isFocused ? activeColor : '#222' }}>
+                <Ionicons name={tabBarIconName} color={isFocused ? activeColor : Colors.text.title} size={22}/>
+                <Text style={{fontSize: 12, fontWeight: isFocused ? 'bold' : 'bold', color: isFocused ? activeColor : Colors.text.title }}>
                   {label}
                 </Text>
               </View>
@@ -83,6 +85,7 @@ function MyTabBar({ state, descriptors, navigation }) {
               onPress={onPress}
               onLongPress={onLongPress}
               style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginLeft: 7}}
+              key={index}
             >
                 <View style={{backgroundColor: '#f57b42', height: Dimensions.bottomBar.height, width: Dimensions.bottomBar.height, borderRadius: Dimensions.bottomBar.height / 2, marginBottom: 10, alignItems: 'center', justifyContent: 'center'}}>
                   <Image
@@ -98,8 +101,61 @@ function MyTabBar({ state, descriptors, navigation }) {
   );
 }
 
+const USER_ID = '5ed2aa4b9124c100284808e4';
 
 class HomeScreen extends Component {
+  componentDidMount() {
+    var self = this;
+
+        console.log("USER HOMESCREEN: " + this.props.user.id)
+
+        fetch('http://craaxcloud.epsevg.upc.edu:35300/api/passengersLocation/', { method: 'PUT',
+        headers: { 
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            id: this.props.user.id,
+            location_x: 118,
+            location_y: 165
+        })}) // URL de la API, en nuestro caso sera localhost
+        .then(res => res.json()) // Cuando recibamos los datos, se convierten en json .then(json => { // cuando ya esté en formato json
+        .then(json => { // cuando ya esté en formato json     
+        }).catch(function(error) {
+            console.log('Error obteniendo los datos: ' + error.message);
+        })
+
+      let x = 0;
+      let times = 9;
+      let i = 0;
+      let wait = 2000;
+
+        setTimeout(function () {
+        setInterval(
+            function() {
+                if(i <= times){
+                    fetch('http://craaxcloud.epsevg.upc.edu:35300/api/passengersLocation/', { method: 'PUT',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        id: self.props.user.id,
+                        location_x: 118 + x,
+                        location_y: 165
+                    })}) // URL de la API, en nuestro caso sera localhost
+                    .then(res => res.json()) // Cuando recibamos los datos, se convierten en json .then(json => { // cuando ya esté en formato json
+                    .then(json => { // cuando ya esté en formato json
+                        x = x + 10;
+                        i = i + 1;
+                    }).catch(function(error) {
+                        console.log('Error obteniendo los datos: ' + error.message);
+                    })
+                } 
+            }
+          , wait);
+        }, 10000);
+        
+    }
+
     render() {
         return (
             <Tab.Navigator
@@ -112,7 +168,7 @@ class HomeScreen extends Component {
             >
                 <Tab.Screen 
                     name="Mapa"
-                    component={MapScreen} 
+                    component={props => <MapScreen user={this.props.user}></MapScreen>} 
                     options={{
                         tabBarIconName: 'md-map',
                         tabBarLabel: 'Mapa',
@@ -123,7 +179,7 @@ class HomeScreen extends Component {
                 />
                 <Tab.Screen 
                     name="Comercio"
-                    component={ShoppingScreen} 
+                    component={props => <ShoppingScreen user={this.props.user}></ShoppingScreen>} 
                     options={{
                         tabBarIconName: 'ios-cart',
                         tabBarLabel: 'Comercio',
@@ -134,7 +190,7 @@ class HomeScreen extends Component {
                 />
                 <Tab.Screen 
                     name="My Pass"
-                    component={MyPassScreen}
+                    component={props => <MyPassScreen user={this.props.user}></MyPassScreen>}
                     style={{position: 'absolute'}} 
                     options={{
                         tabBarIconName: 'md-airplane',
@@ -146,9 +202,9 @@ class HomeScreen extends Component {
                 />
                 <Tab.Screen 
                     name="Notifications"
-                    component={NotificationsScreen} 
+                    component={props => <NotificationsScreen user={this.props.user}></NotificationsScreen>} 
                     options={{
-                      tabBarIconName: 'md-alert',
+                        tabBarIconName: 'md-notifications',
                         tabBarLabel: 'Alertas',
                         tabBarIcon: ({ color, size }) => (
                             <Ionicons name="md-alert" color={color} size={size}/>
@@ -157,7 +213,7 @@ class HomeScreen extends Component {
                 />
                 <Tab.Screen 
                     name="Profile"
-                    component={ProfileScreen} 
+                    component={props => <ProfileScreen user={this.props.user}></ProfileScreen>} 
                     options={{
                         tabBarIconName: 'md-person',
                         tabBarLabel: 'Perfil',

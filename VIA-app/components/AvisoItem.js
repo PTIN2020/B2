@@ -19,14 +19,14 @@ class AvisoItem extends Component {
                     <View style={{flexDirection: 'row', marginBottom: 6}}>
                         <View style={{borderRadius: 6, backgroundColor: '#448ee3', marginRight: 6, alignItems: 'center', justifyContent: 'center', flexDirection: 'row'}}>
                             <Image style={{height: 15, width: 15, tintColor: 'white', marginLeft: 6}} source={require('../assets/car_icon.png')}/>
-                            <Text style={{fontWeight: 'bold', color: 'white', marginHorizontal: 6, marginVertical: 2}}>a B44</Text>
+                            <Text style={{fontWeight: 'bold', color: 'white', marginHorizontal: 6, marginVertical: 2}}>{this.props.numvuelo}</Text>
                         </View>
                     </View>
                 : this.props.mode == 2 ?
                     <View style={{flexDirection: 'row', marginBottom: 6}}>
                         <View style={{borderRadius: 6, backgroundColor: '#3eb855', marginRight: 6, alignItems: 'center', justifyContent: 'center', flexDirection: 'row'}}>
                             <Image style={{height: 14, width: 9, tintColor: 'white', marginLeft: 6}} source={require('../assets/open_door_icon.png')}/>
-                            <Text style={{fontWeight: 'bold', color: 'white', marginHorizontal: 6, marginVertical: 2}}>B44</Text>
+                            <Text style={{fontWeight: 'bold', color: 'white', marginHorizontal: 6, marginVertical: 2}}>{this.props.numvuelo}</Text>
                         </View>
                         <View style={{borderRadius: 6, backgroundColor: '#f26161', marginRight: 6, alignItems: 'center', justifyContent: 'center', flexDirection: 'row'}}>
                             <Image style={{height: 15, width: 15, tintColor: 'white', marginLeft: 6}} source={require('../assets/time_icon.png')}/>
@@ -37,7 +37,7 @@ class AvisoItem extends Component {
                     <View style={{flexDirection: 'row', marginBottom: 6}}>
                         <View style={{borderRadius: 6, backgroundColor: '#3eb855', marginRight: 6, alignItems: 'center', justifyContent: 'center', flexDirection: 'row'}}>
                             <Image style={{height: 13, width: 13, tintColor: 'white', marginLeft: 6}} source={require('../assets/plane_icon.png')}/>
-                            <Text style={{fontWeight: 'bold', color: 'white', marginHorizontal: 6, marginVertical: 2}}>B44</Text>
+                            <Text style={{fontWeight: 'bold', color: 'white', marginHorizontal: 6, marginVertical: 2}}>{this.props.numvuelo}</Text>
                         </View>
                     </View>
                 :
